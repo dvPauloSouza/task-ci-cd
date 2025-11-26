@@ -1,0 +1,20 @@
+# 1. Gatilho (trigger)
+name: Task Pipeline CI-CD
+on: 
+  push:
+    branches: # [main, develop] # será feito push na main ou na developer
+      - main
+# 2. Definição dos Jobs
+jobs:
+  ci-continious-integracion:
+    name: Task CI and CD
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "CI - Continuos Integration and CD - Continous Delivery/Deployment"
+        name: Menssage CI CD
+      - uses: actions/checkout@v5
+        name: Clonando o meu repositório nesta máquina virtual e realizando checkout
+      - name: Zipar os arquivos do repositorio github
+        run: zip -r github-dvPauloSouza.zip .
+      - name: Listar os arquivos do repositório
+        run: ls -la
